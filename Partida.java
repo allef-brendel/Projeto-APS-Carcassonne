@@ -7,7 +7,9 @@ public class Partida {
 
 	private BolsaDeTiles tiles;
 	private Tile proximoTile;
+	private int contadorDeTurno;
 	private boolean status;
+	private boolean pecaAtualJaPosicionada;
 	private TabuleiroFlexivel tabuleiro = new TabuleiroFlexivel("  ");
 
 	Partida(BolsaDeTiles tiles) {
@@ -33,12 +35,19 @@ public class Partida {
 		return null;
 	}
 
-	public Partida girarTile() {
+		public Partida girarTile() {
+			if(pecaAtualJaPosicionada) {
+				throw new ExcecaoJogo("Não pode girar tile já posicionado");
+			}
+			if(contadorDeTurno == 1) { 
+				throw new ExcecaoJogo("Não pode girar tile já posicionado");
+			}
 		proximoTile.girar();
 		return this;
 	}
 
 	private void pegarProximoTile() {
+		contadorDeTurno ++;
 		proximoTile = tiles.pegar();
 		if(proximoTile != null) {
 			proximoTile.reset();
@@ -93,3 +102,4 @@ public class Partida {
 		return configuracao;
 	}
 }
+//
