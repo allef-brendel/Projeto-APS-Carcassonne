@@ -105,7 +105,7 @@ public class JogoTest {
 		partida.finalizarTurno();
 		
 		verificarRelatorioPartida(partida, "Partida_Finalizada", "AZUL(0,7); VERDE(0,7)");
-		ocorreExcecaoJogo(() -> partida.relatorioTurno(), "Partida finalizada");
+		ocorreExcecaoJogo(() -> partida.relatorioTurno(), "Partida_Finalizada");
 		verificarRelatorioTabuleiro(partida, "30N");
 	}
 
